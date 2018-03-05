@@ -1,0 +1,1 @@
+create index IDX_TS_PROJECT_PARENT on TS_PROJECT (PARENT_ID);

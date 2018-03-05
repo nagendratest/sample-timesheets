@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<!--
+  ~ Copyright (c) 2016 Haulmont
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd" caption="msg://editCaption"
+        class="com.haulmont.timesheets.gui.activitytype.ActivityTypeEdit" datasource="activityTypeDs"
+        focusComponent="fieldGroup" messagesPack="com.haulmont.timesheets.gui.activitytype">
+    <dsContext>
+        <datasource id="activityTypeDs" class="com.haulmont.timesheets.entity.ActivityType"
+                    view="activityType-with-projects">
+            <collectionDatasource id="projectsDs" property="projects"/>
+        </datasource>
+    </dsContext>
+    <dialogMode width="600"/>
+    <layout expand="windowActions" spacing="true">
+        <fieldGroup id="fieldGroup" datasource="activityTypeDs">
+            <column width="250px">
+                <field id="name"/>
+                <field id="code"/>
+                <field id="description" custom="true"/>
+            </column>
+        </fieldGroup>
+        <groupBox id="projectsBox" caption="msg://com.haulmont.timesheets.entity/ActivityType.projects">
+            <table id="projectsTable" height="200px" width="100%">
+                <actions>
+                    <action id="add"/>
+                    <action id="remove"/>
+                </actions>
+                <columns>
+                    <column id="name"/>
+                    <column id="code"/>
+                </columns>
+                <rows datasource="projectsDs"/>
+                <buttonsPanel>
+                    <button action="projectsTable.add"/>
+                    <button action="projectsTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <frame id="windowActions" screen="editWindowActions"/>
+    </layout>
+</window>

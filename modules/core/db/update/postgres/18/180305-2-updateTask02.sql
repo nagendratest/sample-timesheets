@@ -1,0 +1,1 @@
+create index IDX_TS_TASK_PROJECT on TS_TASK (PROJECT_ID);

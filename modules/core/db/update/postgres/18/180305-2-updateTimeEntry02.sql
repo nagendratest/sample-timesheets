@@ -1,0 +1,1 @@
+create index IDX_TS_TIME_ENTRY_TASK on TS_TIME_ENTRY (TASK_ID);
